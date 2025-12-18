@@ -98,11 +98,12 @@ namespace ShortcutCreator
             string shortcutPath = txtTarget.Text + "\\";
             string fullShortcutPath = shortcutPath + (!string.IsNullOrWhiteSpace(txtName.Text) ? txtName.Text : "MyLink") + ".lnk";
             IWshShortcut shortcut = shell.CreateShortcut(fullShortcutPath);
-            shortcut.TargetPath = txtTarget.Text;
             shortcut.IconLocation = txtIcon.Text;
+            shortcut.Hotkey = txtShortcut.Text;
+            shortcut.TargetPath = txtTarget.Text;
+            shortcut.Arguments = !string.IsNullOrWhiteSpace(txtParameters.Text) ? txtParameters.Text : string.Empty;
             shortcut.Description = !string.IsNullOrWhiteSpace(txtComments.Text) ? txtComments.Text : string.Empty;
             shortcut.WindowStyle = getWindowStyle();
-
             shortcut.Save();
         }
 
@@ -124,13 +125,7 @@ namespace ShortcutCreator
 
         private void txtShortcut_KeyUp(object sender, KeyEventArgs e)
         {
-            if (e.KeyData == Keys.Back)
-            {
-                txtShortcut.Text = "None";
-                return;
-            }
-
-            txtShortcut.Text = "Ctrl + Alt + " + e.KeyData;
+            txtShortcut.Text = "Ctrl+Alt+" + e.KeyData;
         }
     }
 }
