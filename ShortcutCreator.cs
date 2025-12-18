@@ -64,7 +64,28 @@ namespace ShortcutCreator
                 dialog.Filters.Add(iconFilter);
                 if (dialog.ShowDialog() == CommonFileDialogResult.Ok)
                 {
-                    txtIcon.Text = dialog.FileName;
+                    try
+                    {
+                        // Dispose of the image memory but keep a unique copy for the picture box
+                        using (Image image = Image.FromFile(dialog.FileName))
+                        {
+                            // Draw the unique copy from the source
+                            Bitmap copyBitmap = new Bitmap(image.Width, image.Height);
+                            using (Graphics copy = Graphics.FromImage(copyBitmap))
+                            {
+                                copy.DrawImage(image, 0, 0);
+                            }
+                            pbxIcon.Image = copyBitmap;
+                        }
+                        txtIcon.Text = dialog.FileName;
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show("The icon that was entered in cannot be processed.",
+                            "Icon processing error",
+                            MessageBoxButtons.OK,
+                            MessageBoxIcon.Error);
+                    }
                 }
             }
         }
@@ -97,14 +118,35 @@ namespace ShortcutCreator
 
             string shortcutPath = txtTarget.Text + "\\";
             string fullShortcutPath = shortcutPath + (!string.IsNullOrWhiteSpace(txtName.Text) ? txtName.Text : "MyLink") + ".lnk";
-            IWshShortcut shortcut = shell.CreateShortcut(fullShortcutPath);
-            shortcut.IconLocation = txtIcon.Text;
-            shortcut.Hotkey = txtShortcut.Text;
-            shortcut.TargetPath = txtTarget.Text;
-            shortcut.Arguments = !string.IsNullOrWhiteSpace(txtParameters.Text) ? txtParameters.Text : string.Empty;
-            shortcut.Description = !string.IsNullOrWhiteSpace(txtComments.Text) ? txtComments.Text : string.Empty;
-            shortcut.WindowStyle = getWindowStyle();
-            shortcut.Save();
+            try
+            {
+                IWshShortcut shortcut = shell.CreateShortcut(fullShortcutPath);
+                shortcut.IconLocation = txtIcon.Text;
+                shortcut.Hotkey = txtShortcut.Text;
+                shortcut.TargetPath = txtTarget.Text;
+                shortcut.Arguments = !string.IsNullOrWhiteSpace(txtParameters.Text) ? txtParameters.Text : string.Empty;
+                shortcut.Description = !string.IsNullOrWhiteSpace(txtComments.Text) ? txtComments.Text : string.Empty;
+                shortcut.WindowStyle = getWindowStyle();
+                shortcut.Save();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("There was an error trying to generate the shortcut. Make sure all information is valid",
+                    "Shortcut creation error",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Error);
+                return;
+            }
+
+            MessageBox.Show("Shortcut was created successfully",
+                    "Shortcut creation successful error",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Information);
+        }
+
+        private void btnClearShortcut_Click(object sender, EventArgs e)
+        {
+            txtShortcut.Text = string.Empty;
         }
 
         private int getWindowStyle()
