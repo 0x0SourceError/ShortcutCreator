@@ -10,7 +10,7 @@ namespace ShortcutCreator
         {
             ShowExtensions = true,
         };
-        private KeyRecorder keyRecorder = new KeyRecorder();
+        private frmKeyRecorder keyRecorder = new frmKeyRecorder();
 
         public frmShortcutCreator()
         {
@@ -117,7 +117,7 @@ namespace ShortcutCreator
                 return;
             }
 
-            string shortcutPath = txtTarget.Text + "\\";
+            string shortcutPath = txtOutput.Text + "\\";
             string fullShortcutPath = shortcutPath + (!string.IsNullOrWhiteSpace(txtName.Text) ? txtName.Text : "MyLink") + ".lnk";
             try
             {
@@ -140,7 +140,7 @@ namespace ShortcutCreator
             }
 
             MessageBox.Show("Shortcut was created successfully",
-                    "Shortcut creation successful error",
+                    "Shortcut creation successful",
                     MessageBoxButtons.OK,
                     MessageBoxIcon.Information);
         }
@@ -166,18 +166,18 @@ namespace ShortcutCreator
             }
         }
 
-        private void txtShortcut_KeyUp(object sender, KeyEventArgs e)
-        {
-            txtShortcut.Text = "Ctrl+Alt+" + e.KeyData;
-        }
-
         private void btnRecord_Click(object sender, EventArgs e)
         {
             if (keyRecorder.IsDisposed)
             {
-                keyRecorder = new KeyRecorder();
+                keyRecorder = new frmKeyRecorder();
             }
-            keyRecorder.ShowDialog();
+
+            DialogResult result = keyRecorder.ShowDialog();
+            if (result == DialogResult.Cancel)
+            {
+                txtShortcut.Text = frmKeyRecorder.ShortcutKeySet;
+            }
         }
     }
 }

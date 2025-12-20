@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmShortcutCreator));
             label1 = new Label();
             txtName = new TextBox();
             txtTarget = new TextBox();
@@ -61,150 +62,133 @@
             // label1
             // 
             label1.AutoSize = true;
-            label1.Location = new Point(17, 20);
-            label1.Margin = new Padding(4, 0, 4, 0);
+            label1.Location = new Point(12, 12);
             label1.Name = "label1";
-            label1.Size = new Size(63, 25);
+            label1.Size = new Size(42, 15);
             label1.TabIndex = 0;
             label1.Text = "Name:";
             // 
             // txtName
             // 
-            txtName.Location = new Point(130, 15);
-            txtName.Margin = new Padding(4, 5, 4, 5);
+            txtName.Location = new Point(91, 9);
             txtName.Name = "txtName";
-            txtName.Size = new Size(544, 31);
+            txtName.Size = new Size(382, 23);
             txtName.TabIndex = 1;
             // 
             // txtTarget
             // 
-            txtTarget.Location = new Point(130, 63);
-            txtTarget.Margin = new Padding(4, 5, 4, 5);
+            txtTarget.Location = new Point(91, 38);
             txtTarget.Name = "txtTarget";
             txtTarget.ReadOnly = true;
-            txtTarget.Size = new Size(427, 31);
+            txtTarget.Size = new Size(300, 23);
             txtTarget.TabIndex = 3;
             // 
             // label2
             // 
             label2.AutoSize = true;
-            label2.Location = new Point(17, 68);
-            label2.Margin = new Padding(4, 0, 4, 0);
+            label2.Location = new Point(12, 41);
             label2.Name = "label2";
-            label2.Size = new Size(64, 25);
+            label2.Size = new Size(43, 15);
             label2.TabIndex = 2;
             label2.Text = "Target:";
             // 
             // txtIcon
             // 
-            txtIcon.Location = new Point(130, 112);
-            txtIcon.Margin = new Padding(4, 5, 4, 5);
+            txtIcon.Location = new Point(91, 67);
             txtIcon.Name = "txtIcon";
             txtIcon.ReadOnly = true;
-            txtIcon.Size = new Size(427, 31);
+            txtIcon.Size = new Size(300, 23);
             txtIcon.TabIndex = 6;
             // 
             // label3
             // 
             label3.AutoSize = true;
-            label3.Location = new Point(17, 117);
-            label3.Margin = new Padding(4, 0, 4, 0);
+            label3.Location = new Point(12, 70);
             label3.Name = "label3";
-            label3.Size = new Size(50, 25);
+            label3.Size = new Size(33, 15);
             label3.TabIndex = 5;
             label3.Text = "Icon:";
             // 
             // txtParameters
             // 
-            txtParameters.Location = new Point(130, 160);
-            txtParameters.Margin = new Padding(4, 5, 4, 5);
+            txtParameters.Location = new Point(91, 96);
             txtParameters.Name = "txtParameters";
-            txtParameters.Size = new Size(544, 31);
+            txtParameters.Size = new Size(382, 23);
             txtParameters.TabIndex = 9;
             // 
             // label4
             // 
             label4.AutoSize = true;
-            label4.Location = new Point(17, 165);
-            label4.Margin = new Padding(4, 0, 4, 0);
+            label4.Location = new Point(12, 99);
             label4.Name = "label4";
-            label4.Size = new Size(103, 25);
+            label4.Size = new Size(69, 15);
             label4.TabIndex = 8;
             label4.Text = "Parameters:";
             // 
             // txtShortcut
             // 
-            txtShortcut.Location = new Point(130, 208);
-            txtShortcut.Margin = new Padding(4, 5, 4, 5);
+            txtShortcut.Location = new Point(91, 125);
             txtShortcut.Name = "txtShortcut";
             txtShortcut.ReadOnly = true;
-            txtShortcut.Size = new Size(314, 31);
+            txtShortcut.Size = new Size(221, 23);
             txtShortcut.TabIndex = 11;
-            txtShortcut.KeyUp += txtShortcut_KeyUp;
             // 
             // label5
             // 
             label5.AutoSize = true;
-            label5.Location = new Point(17, 213);
-            label5.Margin = new Padding(4, 0, 4, 0);
+            label5.Location = new Point(12, 128);
             label5.Name = "label5";
-            label5.Size = new Size(116, 25);
+            label5.Size = new Size(77, 15);
             label5.TabIndex = 10;
             label5.Text = "Shortcut Key:";
             // 
             // label6
             // 
             label6.AutoSize = true;
-            label6.Location = new Point(17, 262);
-            label6.Margin = new Padding(4, 0, 4, 0);
+            label6.Location = new Point(12, 157);
             label6.Name = "label6";
-            label6.Size = new Size(103, 25);
-            label6.TabIndex = 13;
+            label6.Size = new Size(69, 15);
+            label6.TabIndex = 14;
             label6.Text = "Comments:";
             // 
             // txtComments
             // 
-            txtComments.Location = new Point(130, 257);
-            txtComments.Margin = new Padding(4, 5, 4, 5);
+            txtComments.Location = new Point(91, 154);
             txtComments.Name = "txtComments";
-            txtComments.Size = new Size(544, 31);
-            txtComments.TabIndex = 14;
+            txtComments.Size = new Size(382, 23);
+            txtComments.TabIndex = 15;
             // 
             // label7
             // 
             label7.AutoSize = true;
-            label7.Location = new Point(17, 310);
-            label7.Margin = new Padding(4, 0, 4, 0);
+            label7.Location = new Point(12, 186);
             label7.Name = "label7";
-            label7.Size = new Size(108, 25);
-            label7.TabIndex = 15;
+            label7.Size = new Size(71, 15);
+            label7.TabIndex = 16;
             label7.Text = "Run Option:";
             // 
             // txtOutput
             // 
-            txtOutput.Location = new Point(234, 370);
-            txtOutput.Margin = new Padding(4, 5, 4, 5);
+            txtOutput.Location = new Point(164, 222);
             txtOutput.Name = "txtOutput";
             txtOutput.ReadOnly = true;
-            txtOutput.Size = new Size(513, 31);
-            txtOutput.TabIndex = 20;
+            txtOutput.Size = new Size(360, 23);
+            txtOutput.TabIndex = 21;
             // 
             // label8
             // 
             label8.AutoSize = true;
-            label8.Location = new Point(119, 377);
-            label8.Margin = new Padding(4, 0, 4, 0);
+            label8.Location = new Point(83, 226);
             label8.Name = "label8";
-            label8.Size = new Size(112, 25);
-            label8.TabIndex = 19;
+            label8.Size = new Size(75, 15);
+            label8.TabIndex = 20;
             label8.Text = "Output Path:";
             // 
             // btnOpenTarget
             // 
-            btnOpenTarget.Location = new Point(569, 62);
-            btnOpenTarget.Margin = new Padding(4, 5, 4, 5);
+            btnOpenTarget.Location = new Point(398, 37);
             btnOpenTarget.Name = "btnOpenTarget";
-            btnOpenTarget.Size = new Size(107, 34);
+            btnOpenTarget.Size = new Size(75, 24);
             btnOpenTarget.TabIndex = 4;
             btnOpenTarget.Text = "Open";
             btnOpenTarget.UseVisualStyleBackColor = true;
@@ -212,10 +196,9 @@
             // 
             // btnOpenIcon
             // 
-            btnOpenIcon.Location = new Point(569, 111);
-            btnOpenIcon.Margin = new Padding(4, 5, 4, 5);
+            btnOpenIcon.Location = new Point(398, 67);
             btnOpenIcon.Name = "btnOpenIcon";
-            btnOpenIcon.Size = new Size(107, 34);
+            btnOpenIcon.Size = new Size(75, 23);
             btnOpenIcon.TabIndex = 7;
             btnOpenIcon.Text = "Open";
             btnOpenIcon.UseVisualStyleBackColor = true;
@@ -223,22 +206,20 @@
             // 
             // btnOpenOutput
             // 
-            btnOpenOutput.Location = new Point(757, 368);
-            btnOpenOutput.Margin = new Padding(4, 5, 4, 5);
+            btnOpenOutput.Location = new Point(530, 221);
             btnOpenOutput.Name = "btnOpenOutput";
-            btnOpenOutput.Size = new Size(107, 38);
-            btnOpenOutput.TabIndex = 21;
+            btnOpenOutput.Size = new Size(75, 23);
+            btnOpenOutput.TabIndex = 22;
             btnOpenOutput.Text = "Open";
             btnOpenOutput.UseVisualStyleBackColor = true;
             btnOpenOutput.Click += btnOpenOutput_Click;
             // 
             // btnGenerateShortcut
             // 
-            btnGenerateShortcut.Location = new Point(444, 418);
-            btnGenerateShortcut.Margin = new Padding(4, 5, 4, 5);
+            btnGenerateShortcut.Location = new Point(311, 251);
             btnGenerateShortcut.Name = "btnGenerateShortcut";
-            btnGenerateShortcut.Size = new Size(107, 38);
-            btnGenerateShortcut.TabIndex = 22;
+            btnGenerateShortcut.Size = new Size(75, 23);
+            btnGenerateShortcut.TabIndex = 23;
             btnGenerateShortcut.Text = "Generate";
             btnGenerateShortcut.UseVisualStyleBackColor = true;
             btnGenerateShortcut.Click += btnGenerateShortcut_Click;
@@ -246,11 +227,10 @@
             // radNormalWindow
             // 
             radNormalWindow.AutoSize = true;
-            radNormalWindow.Location = new Point(194, 307);
-            radNormalWindow.Margin = new Padding(4, 5, 4, 5);
+            radNormalWindow.Location = new Point(136, 184);
             radNormalWindow.Name = "radNormalWindow";
-            radNormalWindow.Size = new Size(167, 29);
-            radNormalWindow.TabIndex = 16;
+            radNormalWindow.Size = new Size(112, 19);
+            radNormalWindow.TabIndex = 17;
             radNormalWindow.TabStop = true;
             radNormalWindow.Text = "Normal Window";
             radNormalWindow.UseVisualStyleBackColor = true;
@@ -258,11 +238,10 @@
             // radMinimized
             // 
             radMinimized.AutoSize = true;
-            radMinimized.Location = new Point(363, 307);
-            radMinimized.Margin = new Padding(4, 5, 4, 5);
+            radMinimized.Location = new Point(254, 184);
             radMinimized.Name = "radMinimized";
-            radMinimized.Size = new Size(119, 29);
-            radMinimized.TabIndex = 17;
+            radMinimized.Size = new Size(81, 19);
+            radMinimized.TabIndex = 18;
             radMinimized.TabStop = true;
             radMinimized.Text = "Minimized";
             radMinimized.UseVisualStyleBackColor = true;
@@ -270,11 +249,10 @@
             // radMaximized
             // 
             radMaximized.AutoSize = true;
-            radMaximized.Location = new Point(487, 307);
-            radMaximized.Margin = new Padding(4, 5, 4, 5);
+            radMaximized.Location = new Point(341, 184);
             radMaximized.Name = "radMaximized";
-            radMaximized.Size = new Size(122, 29);
-            radMaximized.TabIndex = 18;
+            radMaximized.Size = new Size(82, 19);
+            radMaximized.TabIndex = 19;
             radMaximized.TabStop = true;
             radMaximized.Text = "Maximized";
             radMaximized.UseVisualStyleBackColor = true;
@@ -282,52 +260,47 @@
             // groupBox1
             // 
             groupBox1.Controls.Add(pbxIcon);
-            groupBox1.Location = new Point(691, 3);
-            groupBox1.Margin = new Padding(4, 5, 4, 5);
+            groupBox1.Location = new Point(484, 2);
             groupBox1.Name = "groupBox1";
-            groupBox1.Padding = new Padding(4, 5, 4, 5);
-            groupBox1.Size = new Size(290, 332);
-            groupBox1.TabIndex = 23;
+            groupBox1.Size = new Size(203, 199);
+            groupBox1.TabIndex = 24;
             groupBox1.TabStop = false;
             groupBox1.Text = "Icon";
             // 
             // pbxIcon
             // 
-            pbxIcon.Location = new Point(31, 38);
-            pbxIcon.Margin = new Padding(4, 5, 4, 5);
+            pbxIcon.Location = new Point(22, 23);
             pbxIcon.Name = "pbxIcon";
-            pbxIcon.Size = new Size(229, 267);
+            pbxIcon.Size = new Size(160, 160);
             pbxIcon.SizeMode = PictureBoxSizeMode.CenterImage;
             pbxIcon.TabIndex = 0;
             pbxIcon.TabStop = false;
             // 
             // btnClearShortcut
             // 
-            btnClearShortcut.Location = new Point(567, 207);
-            btnClearShortcut.Margin = new Padding(4, 5, 4, 5);
+            btnClearShortcut.Location = new Point(397, 124);
             btnClearShortcut.Name = "btnClearShortcut";
-            btnClearShortcut.Size = new Size(107, 35);
-            btnClearShortcut.TabIndex = 12;
+            btnClearShortcut.Size = new Size(75, 24);
+            btnClearShortcut.TabIndex = 13;
             btnClearShortcut.Text = "Clear";
             btnClearShortcut.UseVisualStyleBackColor = true;
             btnClearShortcut.Click += btnClearShortcut_Click;
             // 
             // btnRecord
             // 
-            btnRecord.Location = new Point(452, 207);
-            btnRecord.Margin = new Padding(4, 5, 4, 5);
+            btnRecord.Location = new Point(316, 124);
             btnRecord.Name = "btnRecord";
-            btnRecord.Size = new Size(107, 34);
-            btnRecord.TabIndex = 24;
+            btnRecord.Size = new Size(75, 24);
+            btnRecord.TabIndex = 12;
             btnRecord.Text = "Record";
             btnRecord.UseVisualStyleBackColor = true;
             btnRecord.Click += btnRecord_Click;
             // 
             // frmShortcutCreator
             // 
-            AutoScaleDimensions = new SizeF(10F, 25F);
+            AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1000, 468);
+            ClientSize = new Size(700, 281);
             Controls.Add(btnRecord);
             Controls.Add(btnClearShortcut);
             Controls.Add(groupBox1);
@@ -353,7 +326,9 @@
             Controls.Add(label2);
             Controls.Add(txtName);
             Controls.Add(label1);
-            Margin = new Padding(4, 5, 4, 5);
+            FormBorderStyle = FormBorderStyle.FixedSingle;
+            Icon = (Icon)resources.GetObject("$this.Icon");
+            MaximizeBox = false;
             Name = "frmShortcutCreator";
             Text = "Shortcut Creator";
             Load += frmShortcutCreator_Load;

@@ -1,6 +1,6 @@
 ﻿namespace ShortcutCreator
 {
-    partial class KeyRecorder
+    partial class frmKeyRecorder
     {
         /// <summary>
         /// Required designer variable.
@@ -37,9 +37,10 @@
             // lblSequence
             // 
             lblSequence.AutoSize = true;
-            lblSequence.Location = new Point(12, 40);
+            lblSequence.Location = new Point(8, 24);
+            lblSequence.Margin = new Padding(2, 0, 2, 0);
             lblSequence.Name = "lblSequence";
-            lblSequence.Size = new Size(97, 25);
+            lblSequence.Size = new Size(64, 15);
             lblSequence.TabIndex = 0;
             lblSequence.Text = "Sequence: ";
             // 
@@ -53,16 +54,21 @@
             tmrResult.Interval = 1000;
             tmrResult.Tick += tmrResult_Tick;
             // 
-            // KeyRecorder
+            // frmKeyRecorder
             // 
-            AutoScaleDimensions = new SizeF(10F, 25F);
+            AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(497, 109);
+            ClientSize = new Size(348, 65);
             Controls.Add(lblSequence);
-            Name = "KeyRecorder";
+            FormBorderStyle = FormBorderStyle.FixedDialog;
+            Margin = new Padding(2);
+            MaximizeBox = false;
+            MinimizeBox = false;
+            Name = "frmKeyRecorder";
             Text = "Recording key sequence";
-            Load += KeyRecorder_Load;
-            KeyDown += KeyRecorder_KeyDown;
+            FormClosing += frmKeyRecorder_FormClosing;
+            Load += frmKeyRecorder_Load;
+            KeyDown += frmKeyRecorder_KeyDown;
             ResumeLayout(false);
             PerformLayout();
         }
