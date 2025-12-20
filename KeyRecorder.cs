@@ -38,6 +38,7 @@ namespace ShortcutCreator
         {
             recordingSeconds = 0;
             resultsSeconds = 0;
+            lblSequence.Text = "Enter key sequence";
         }
 
         private void frmKeyRecorder_KeyDown(object sender, KeyEventArgs e)
