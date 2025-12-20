@@ -5,11 +5,12 @@ namespace ShortcutCreator
 {
     public partial class frmShortcutCreator : Form
     {
-        readonly WshShell shell = new WshShell();
-        readonly CommonFileDialogFilter iconFilter = new CommonFileDialogFilter("Icon Files", "*.ico")
+        private readonly WshShell shell = new WshShell();
+        private readonly CommonFileDialogFilter iconFilter = new CommonFileDialogFilter("Icon Files", "*.ico")
         {
             ShowExtensions = true,
         };
+        private KeyRecorder keyRecorder = new KeyRecorder();
 
         public frmShortcutCreator()
         {
@@ -168,6 +169,15 @@ namespace ShortcutCreator
         private void txtShortcut_KeyUp(object sender, KeyEventArgs e)
         {
             txtShortcut.Text = "Ctrl+Alt+" + e.KeyData;
+        }
+
+        private void btnRecord_Click(object sender, EventArgs e)
+        {
+            if (keyRecorder.IsDisposed)
+            {
+                keyRecorder = new KeyRecorder();
+            }
+            keyRecorder.ShowDialog();
         }
     }
 }
