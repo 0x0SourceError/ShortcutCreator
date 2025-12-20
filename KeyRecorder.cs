@@ -38,7 +38,6 @@ namespace ShortcutCreator
         {
             recordingSeconds = 0;
             resultsSeconds = 0;
-            lblSequence.Text = "Enter key sequence";
         }
 
         private void frmKeyRecorder_KeyDown(object sender, KeyEventArgs e)
@@ -52,7 +51,7 @@ namespace ShortcutCreator
             {
                 recordedKeys[0] = Keys.ShiftKey;
             }
-            else if (e.KeyCode == Keys.Alt)
+            else if (e.KeyCode == Keys.Alt || e.KeyCode == Keys.Menu)
             {
                 recordedKeys[0] = Keys.Alt;
             }
@@ -108,7 +107,7 @@ namespace ShortcutCreator
 
         private void tmrResult_Tick(object sender, EventArgs e)
         {
-            if (resultsSeconds == 5)
+            if (resultsSeconds == 3)
             {
                 tmrResult.Stop();
                 Close();
