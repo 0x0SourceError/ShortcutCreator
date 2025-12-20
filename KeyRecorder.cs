@@ -6,16 +6,17 @@ namespace ShortcutCreator
 {
     public partial class frmKeyRecorder : Form
     {
+        public static string ShortcutKeySet = "";
+
         [DllImport("user32.dll")]
         private static extern int GetKeyNameText(int lParam, StringBuilder lpString, int nSize);
 
         [DllImport("user32.dll")]
         private static extern uint MapVirtualKey(uint uCode, uint uMapType);
 
-        public static string ShortcutKeySet = "";
         private const uint MAPVK_VK_TO_VSC = 0x0;
         // Using a simple in-place array to record key presses
-        private Keys[] recordedKeys = { Keys.None, Keys.None, Keys.None };
+        private Keys[] recordedKeys = { Keys.None, Keys.None };
         private string recordedKeyFriendlyName = Keys.None.ToString();
         private int recordingSeconds = 0;
         private int resultsSeconds = 0;
@@ -30,15 +31,14 @@ namespace ShortcutCreator
             // Reset keys on load (in case they have values from a previous run)
             recordedKeys[0] = Keys.None;
             recordedKeys[1] = Keys.None;
-            recordedKeys[2] = Keys.None;
             tmrRecord.Start();
-            lblSequence.Text = "Sequence: Recording...";
         }
 
         private void frmKeyRecorder_FormClosing(object sender, FormClosingEventArgs e)
         {
             recordingSeconds = 0;
             resultsSeconds = 0;
+            lblSequence.Text = "Enter key sequence";
         }
 
         private void frmKeyRecorder_KeyDown(object sender, KeyEventArgs e)
@@ -48,28 +48,28 @@ namespace ShortcutCreator
                 return;
             }
 
-            if (e.KeyCode == Keys.ControlKey)
+            if (e.KeyCode == Keys.ShiftKey)
             {
-                recordedKeys[0] = Keys.ControlKey;
-            }
-            else if (e.KeyCode == Keys.ShiftKey)
-            {
-                recordedKeys[1] = Keys.ShiftKey;
+                recordedKeys[0] = Keys.ShiftKey;
             }
             else if (e.KeyCode == Keys.Alt)
             {
-                recordedKeys[1] = Keys.Alt;
+                recordedKeys[0] = Keys.Alt;
             }
             else
             {
-                recordedKeys[2] = e.KeyCode;
-                recordedKeyFriendlyName = getKeyFriendlyName(recordedKeys[2]);
+                // Control is always present when entering in a shortcut key sequence
+                if (e.KeyCode != Keys.ControlKey)
+                {
+                    recordedKeys[1] = e.KeyCode;
+                    recordedKeyFriendlyName = getKeyFriendlyName(recordedKeys[1]);
+                }
             }
         }
 
         private void tmrRecord_Tick(object sender, EventArgs e)
         {
-            if (recordingSeconds >= 5)
+            if (recordingSeconds == 5)
             {
                 recordingSeconds = 0;
                 tmrRecord.Stop();
@@ -77,19 +77,22 @@ namespace ShortcutCreator
                 lblSequence.Text = "Sequence: " + getRecordedSequence();
                 this.Text = "Result key sequence";
             }
-            recordingSeconds++;
+            else
+            {
+                recordingSeconds++;
+            }
         }
 
         private string getRecordedSequence()
         {
             // If a main key was not pressed (Ctrl, Alt/Shift are filled in by default)
-            if (recordedKeys[2] == Keys.None)
+            if (recordedKeys[1] == Keys.None)
             {
                 return "N/A";
-            } 
+            }
 
             StringBuilder sb = new StringBuilder("Ctrl+");
-            if (recordedKeys[1] == Keys.ShiftKey)
+            if (recordedKeys[0] == Keys.ShiftKey)
             {
                 sb.Append("Shift+");
             }
@@ -105,12 +108,15 @@ namespace ShortcutCreator
 
         private void tmrResult_Tick(object sender, EventArgs e)
         {
-            if (resultsSeconds >= 5)
+            if (resultsSeconds == 5)
             {
                 tmrResult.Stop();
                 Close();
             }
-            resultsSeconds++;
+            else
+            {
+                resultsSeconds++;
+            }
         }
 
         private string getKeyFriendlyName(Keys key)
@@ -124,7 +130,7 @@ namespace ShortcutCreator
             {
                 return sb.ToString();
             }
-            
+
             // Just in case there is no user friendly name for a key
             return key.ToString();
         }

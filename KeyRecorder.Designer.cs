@@ -40,9 +40,9 @@
             lblSequence.Location = new Point(8, 24);
             lblSequence.Margin = new Padding(2, 0, 2, 0);
             lblSequence.Name = "lblSequence";
-            lblSequence.Size = new Size(64, 15);
+            lblSequence.Size = new Size(108, 15);
             lblSequence.TabIndex = 0;
-            lblSequence.Text = "Sequence: ";
+            lblSequence.Text = "Enter key sequence";
             // 
             // tmrRecord
             // 
